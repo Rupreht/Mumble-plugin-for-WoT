@@ -24,7 +24,6 @@ static int fetch(float *avatar_pos, float *avatar_front, float *avatar_top, floa
 	// Zeroing the floats
 	for (int i=0;i<3;i++)
 		avatar_pos[i]=avatar_front[i]=avatar_top[i]=camera_pos[i]=camera_front[i]=camera_top[i]=0.0f;
-	context = "<context><game>WorldOfTanks</game></context>";
 
 	char state;
 	bool ok;
@@ -35,7 +34,7 @@ static int fetch(float *avatar_pos, float *avatar_front, float *avatar_top, floa
 
 	if (state == 0)
 		return true; // This results in all vectors beeing zero which tells Mumble to ignore them.
-	identity = L"<identity><name>in Game</name></identity>";
+	identity = L"in Game";
 	// coordinate systems:
 	// "ENU"	"Mumble"	"In game"
 	// East		x+ [0]		x+ [0]
@@ -73,9 +72,8 @@ static int fetch(float *avatar_pos, float *avatar_front, float *avatar_top, floa
 
 static int trylock(const std::multimap<std::wstring, unsigned long long int> &pids) {
 
-
-	if (! initialize(pids, L"WorldOfTanks.exe", L"worldoftanks.exe"))
-                return false;
+	if ((! initialize(pids, L"WorldOfTanks.exe", L"worldoftanks.exe")) && (! initialize(pids, L"WorldOfTanks.exe")))
+        return false;
 
 		// Check if we can get meaningful data from it
 		float apos[3], afront[3], atop[3];
