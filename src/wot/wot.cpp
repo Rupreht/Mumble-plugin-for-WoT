@@ -93,7 +93,7 @@ static const std::wstring longdesc() {
         return std::wstring( L"Supports World Of Tanks v0.6.7. No identity support yet.");
 }
 
-static std::wstring description( L"World Of Tanks v0.6.7 (Made by Rupreht & Magnum72 For clan ERMAK ;)");
+static std::wstring description( L"World Of Tanks v0.6.7");
 static std::wstring shortname( L"World Of Tanks");
 
 static int trylock1() {
